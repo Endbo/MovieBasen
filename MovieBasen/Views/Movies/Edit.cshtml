@@ -1,0 +1,121 @@
+﻿@model MovieBasen.Models.Movie
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Movie</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.ID)
+
+        <div class="form-group">
+            <div class="control-label col-lg-2 col-lg-push-1">
+                <label>Profile Image</label>
+            </div>
+
+            <div class="col-lg-12 col-lg-push-2 ">
+                @if (Model.MovieImagePath == null)
+                {
+                    <img src="http://placehold.it/200x200" alt="Profile image" />
+                }
+                else
+                {
+                    <img src="@Model.MovieImagePath" alt="Profile image" />
+                }
+            </div>
+
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Year, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Year, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Year, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Synopsis, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Synopsis, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Synopsis, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="dl-horizontal-SubDetails blockcenter gray-round col-lg-8 col-md-push-1">
+            <dt>
+                @Html.DisplayNameFor(model => model.MoviesGenres.FirstOrDefault().Genre)
+            </dt>
+
+            <dd>
+                &ensp;
+                @foreach (var item in Model.MoviesGenres)
+                {
+                    <mydt>
+                        &nbsp; @Html.DisplayFor(modelItem => item.Genre.Name),
+                    </mydt>
+                }
+            </dd>
+
+
+            <dt>
+                @Html.DisplayNameFor(model => model.MoviesActors.FirstOrDefault().Actor)
+            </dt>
+
+            <dd>
+                &ensp;
+                @foreach (var item in Model.MoviesActors)
+                {
+                    <mydt>
+                        &nbsp; @Html.DisplayFor(modelItem => item.Actor.FullName),
+                    </mydt>
+                }
+            </dd>
+        </div>
+
+        <div class="myActorAndGenreBtn col-lg-5 col-md-offset-7">
+            @Html.ActionLink("Add Genre", "CreateGenretoMovie", new { movieID = Model.ID }, new { @class = "giveJob_btn btn btn-group" }) |
+            @Html.ActionLink("Add Actor", "CreateActortoMovie", new { movieID = Model.ID }, new { @class = "giveJob_btn btn btn-group" })
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-1 col-md-10">
+                <label>Change Image</label>
+                <input type="file" name="image" />
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

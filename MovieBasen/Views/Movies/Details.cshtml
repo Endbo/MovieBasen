@@ -1,0 +1,76 @@
+﻿@model MovieBasen.Models.Movie
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Movie Details</h2>
+
+<h4 class="coolContainerTitel"> @Html.DisplayFor(model => model.Name)</h4>
+<h5 class="coolContainerYear"> (@Html.DisplayFor(model => model.Year)) </h5>
+
+<div>
+    <div class="col-lg-12">
+        @if (Model.MovieImagePath == null)
+        {
+            <img src="http://placehold.it/200x200" alt="Profile image" />
+        }
+        else
+        {
+            <img src="@Model.MovieImagePath" alt="Profile image" />
+        }
+    </div>
+
+   
+    <div class="col-lg-8 ">
+        <p></p>
+        @Html.DisplayFor(model => model.Synopsis)
+        <p></p>
+    </div>
+
+
+    <dl class="dl-horizontal-SubDetails blockcenter gray-round col-lg-8 col-md-offset-1">
+        <dt>
+            @Html.DisplayNameFor(model => model.MoviesGenres.FirstOrDefault().Genre)
+        </dt>
+
+        <dd>
+            &ensp;
+            @foreach (var item in Model.MoviesGenres)
+            {
+                <mydt>
+                    &nbsp; @Html.DisplayFor(modelItem => item.Genre.Name),
+                </mydt>
+            }
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MoviesActors.FirstOrDefault().Actor)
+        </dt>
+
+        <dd>
+            &ensp;
+            @foreach (var item in Model.MoviesActors)
+            {
+                <mydt>
+                    &nbsp; @Html.DisplayFor(modelItem => item.Actor.FullName),
+                </mydt>
+            }
+        </dd>
+    </dl>
+</div>
+
+@*  
+  ---- Har flyttede det til Edith Movie ----
+    <div class="col-lg-5 col-md-offset-7">
+        @Html.ActionLink("Add Genre", "CreateGenretoMovie", new { movieID = Model.ID }, new { @class = "giveJob_btn btn btn-group" }) |
+        @Html.ActionLink("Add Actor", "CreateActortoMovie", new { movieID = Model.ID }, new { @class = "giveJob_btn btn btn-group" })
+    </div>
+*@
+
+
+<div class="col-lg-12">
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</div>

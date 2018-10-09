@@ -1,0 +1,75 @@
+﻿
+@*conde inspired from .http://www.dotnetfunda.com/articles/show/2898/working-with-roles-in-aspnet-identity-for-mvc*@
+<br />
+<h2>Roll Managment</h2>
+
+
+<div class="row">
+    <div class="col-lg-offset-4">
+        @if (ViewBag.UserRoles != null)
+        {
+            <div>
+                <h3> User Role </h3>
+                <ol>
+                    @foreach (string roles in ViewBag.UserRoles)
+                    {
+                        <li>
+                            @roles
+                        </li>
+                    }
+                </ol>
+            </div>
+        }
+    </div>
+    <hr />
+    <div class="col-lg-offset-2 col-md-6">
+        <h3>Add Role To</h3>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            <div>                                    
+                 @Html.TextBox("UserNamn", null, new { @readonly = "true" })            
+            </div>
+            <br />
+            <div>
+                 @Html.DropDownList("RoleNamn", (IEnumerable<SelectListItem>)ViewBag.Roles, "Select...")
+            </div>
+            <br />
+            <div >
+                <input type="submit" value="Save" class="btn btn-success"/>
+            </div>
+
+        }
+    </div>
+    <hr >
+    <div>
+        <h3>Delete Roll from</h3>
+        @using (Html.BeginForm("RoleAndUserDelete", "Account"))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+
+            <div>
+                @Html.TextBox("UserNamn", null, new { @readonly = "true" })
+            </div>
+            <br />
+            <div>
+
+                @Html.DropDownList("RoleNamn", (IEnumerable<SelectListItem>)ViewBag.Roles, "Välj...")
+
+            </div>
+            <br />
+
+                <input type="submit" value="Delete" class="btn btn-danger"/>
+            
+
+        }
+    </div>
+
+    <br />
+    <br /><br />
+    @Html.ActionLink("Back to Index", "RoleUserIndex")
+
+</div>

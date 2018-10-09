@@ -1,0 +1,51 @@
+﻿@model IEnumerable<MovieBasen.Models.Movie>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+
+<div class="row" style="margin-top:20px">
+    <div class="col-md-12">
+        @foreach (var item in Model)
+        {
+            <div class="col-lg-3">
+                <h4 class="coolContainerTitel"> @Html.DisplayFor(modelItem => item.Name)</h4>
+                <h5 class="coolContainerYear"> (@Html.DisplayFor(modelItem => item.Year))</h5>
+
+                <br /><br />
+
+                @if (item.MovieImagePath == null)
+                {
+                    <a href="@Url.Action("Details", "Movies", new {id = item.ID})">
+                        <img src="http://placehold.it/200x200" class="thumbnail" />
+                    </a>
+
+                }
+                else
+                {
+                    <a href="@Url.Action("Details", "Movies", new {id = item.ID})">
+                        <img src="../../@item.MovieImagePath" class="thumbnail" />
+                    </a>
+                }
+
+                <div class="EditAndDeleteBtn">
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                </div>
+            </div>
+        }
+
+
+    </div>
+
+</div>
+
+

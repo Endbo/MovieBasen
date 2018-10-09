@@ -1,0 +1,83 @@
+﻿@model MovieBasen.ViewModels.RoleAndUserManagerVm
+
+@*conde inspired from .http://www.dotnetfunda.com/articles/show/2898/working-with-roles-in-aspnet-identity-for-mvc*@
+<br/>
+<h2> Role and User Index </h2>
+  <br/>
+  <hr/>
+<div class="container">
+<div class="row well">
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+        <table class="table table-responsive table-striped table-hover ">
+
+            <tr>
+
+                <th>
+                    @Html.Label("User Role")
+
+                </th>
+
+            </tr>
+
+            @foreach (var item in Model.UsersRole)
+            {
+                <tr>
+                <td>
+                @Html.DisplayFor(model => item)
+                </td>
+                </tr>
+
+            }
+        </table>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+        <table class="table table-responsive table-striped table-hover ">
+            <tr>
+                <th>
+                    @Html.Label("User Email")
+                </th>
+            </tr>
+
+            @foreach (var item in Model.UsersEmailName)
+            {
+                <tr>
+                <td>
+                @Html.DisplayFor(model => item)
+
+                </td>
+
+                </tr>
+            }
+        </table>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+        <table class="table table-responsive table-striped table-hover ">
+            <tr>
+                <th>
+                    @Html.Label("User Name")
+                </th>
+                <th>
+                    @Html.Label("Manage Roles ")
+                </th>
+            </tr>
+
+            @foreach (var item in Model.UsersName)
+            {
+                <tr>
+
+                <td>
+                @Html.DisplayFor(model => item)
+                </td>
+                <td>
+                @Html.ActionLink("Manage Roles", "RoleAndUserManagement", new { UserNamn = item })
+
+                </td>
+                </tr>
+
+            }
+        </table>
+        </div>
+    </div>
+</div>
+
+

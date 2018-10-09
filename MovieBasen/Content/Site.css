@@ -1,0 +1,177 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 300px;
+}
+
+h1, h2, h3 {
+    padding-bottom: 25px;
+}
+
+h4, h5, h6 {
+    padding-bottom: 0px;
+}
+
+h5 {
+    color: #606060;
+    padding-block-start: 1.8px;
+}
+
+.container body-content {
+    padding-bottom: 50px;
+}
+.EditAndDeleteBtn{
+        padding-bottom: 100px;
+        line-height: 0;
+        padding-left: 5px;
+
+
+}
+
+/* Fix Movie Name and year in movieDetail  */
+.coolContainerTitel  {
+    float: left;
+    padding-left: 0px;
+}
+.coolContainerYear  {
+    float: left;
+    padding-left: 10px;
+}
+
+
+/* Grå baggrund box */
+.gray-round {
+    background-color: #f4f4f4;
+    border-radius: 6px;
+    padding-left: 110px;
+    padding-right: 15px;
+    padding-top: 2px;
+    padding-bottom: 1px;
+}
+
+
+.blockcenter {
+    margin-left: auto;
+    margin-right: 350px;
+}
+
+
+/* Grønknap */
+.giveJob_btn {
+    background-color: lightgreen;
+    font-size: 12px;
+}
+
+.form-horizontal {
+    padding-bottom: 5px;
+}
+
+
+/* Ikonet i kalenderen til datepicker */
+#calendarIcon {
+    cursor: pointer;
+    color: green;
+    position: absolute;
+    font-size: 20px;
+    right: 30px;
+    top: 6px;
+}
+
+.searchBar {
+    padding-top: 13px;
+}
+
+.glyphicon-search {
+    right: 25px;
+    font-size: 15px;
+    top: 2.5px;
+}
+
+
+/* Gør Labelet StartTid og SlutTid aligner */
+.control-label-FindVikar {
+    text-align: start;
+    padding-top: 7px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+
+
+
+
+/* ----------------------- Start - This is in the Movie Detail Page ---------------------------------- */
+.dl-horizontal-SubDetails {
+    margin-bottom: 65px;
+    line-height: 1.75;
+}
+
+    .dl-horizontal-SubDetails dd {
+        margin-left: -43px;
+        line-height: 1.5;
+    }
+
+    .dl-horizontal-SubDetails mydt {
+        margin-left: -18px;
+        line-height: 1.5;
+        margin-right: 16px;
+    }
+
+    .dl-horizontal-SubDetails dt {
+        margin-left: -95px;
+        float: left;
+        /*  width: 110px;  */
+        overflow: hidden;
+        clear: left;
+        text-align: left;
+        white-space: normal;
+    }
+
+/* ----------------------- End - This is in the Movie Detail Page ---------------------------------- */
+
+
+/* ----------------------- Start - This is in the Profile Detail Page ---------------------------------- */
+.dl-horizontal-ProfileDetails {
+    margin-bottom: 150px;
+    margin-top: -260px;
+    line-height: 1.75;
+}
+
+    .dl-horizontal-ProfileDetails dd {
+        margin-left: 120px;
+        line-height: 1.75;
+    }
+
+    .dl-horizontal-ProfileDetails dt {
+        margin-left: 40px;
+        float: left;
+        width: 110px;
+        overflow: hidden;
+        clear: left;
+        text-align: left;
+        white-space: normal;
+    }
+/* ----------------------- End - This is in the Profile Detail Page ---------------------------------- */
+
+.myActorAndGenreBtn{
+    top: -45px;
+}

@@ -1,0 +1,12 @@
+﻿@using MovieBasen.Controllers
+
+@using (Html.BeginForm("Index", "Movies"))
+{
+            <div class="searchBar">
+                @Html.TextBox("SearchString", null)
+                <a href="#">
+                    <span class="glyphicon glyphicon-search"></span>
+                </a>
+            </div>
+}
+

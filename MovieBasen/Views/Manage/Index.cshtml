@@ -1,0 +1,74 @@
+﻿@model MovieBasen.Models.IndexViewModel
+@{
+    ViewBag.Title = "Manage";
+}
+
+<h2>@ViewBag.Title.</h2>
+
+<p class="text-success">@ViewBag.StatusMessage</p>
+<div>
+    <h4>Change your account settings</h4>
+    <hr />
+
+
+    @using (Html.BeginForm("SaveImage", "Manage", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        if (Model.ProfileImagePath == null)
+        {
+            <img src="http://placehold.it/200x200" alt="Profile image" />
+        }
+        else
+        {
+            <img src="@Model.ProfileImagePath" alt="Profile image" />
+        }
+        <br />
+        <input type="file" name="image" />
+        <br />
+        <input type="submit" value="Save" class="btn buttonMine">
+    }
+
+
+    <dl class="dl-horizontal-ProfileDetails col-md-offset-2">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Number)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <br />
+
+        <dt>Password:</dt>
+        <dd>
+            [
+            @if (Model.HasPassword)
+            {
+                @Html.ActionLink("Change your password", "ChangePassword")
+            }
+            else
+            {
+                @Html.ActionLink("Create", "SetPassword")
+            }
+            ]
+        </dd>
+    </dl>
+</div>
+
+
